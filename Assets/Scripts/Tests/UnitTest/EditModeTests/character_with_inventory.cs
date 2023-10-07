@@ -1,3 +1,4 @@
+using NSubstitute;
 using NUnit.Framework;
 using Tests.UnitTest.Scripts;
 
@@ -9,7 +10,7 @@ namespace Tests.UnitTest.EditModeTests
         public void with_90_armor_takes_10_percent_damage()
         {
             //ARRANGE 
-            Character character = new Character();
+            ICharacter character = Substitute.For<ICharacter>();
             Inventory inventory = new Inventory();
 
             Item pants = new Item() { EquipSlot = EquipSlots.Legs, Armor = 40 };
@@ -18,7 +19,8 @@ namespace Tests.UnitTest.EditModeTests
             inventory.EquipItem(pants);
             inventory.EquipItem(shield);
 
-            character.Inventory = inventory;
+            // character.Inventory = inventory;
+            character.Inventory.Returns(inventory);
 
             // ACT
             int calculatedDamage = DamageCalculator.CalculateDamage(1000, character);
