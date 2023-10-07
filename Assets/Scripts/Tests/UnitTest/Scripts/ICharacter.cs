@@ -5,5 +5,6 @@ namespace Tests.UnitTest.Scripts
         Inventory Inventory { get; }
         int Health { get; }
         int Level { get; }
+        void OnItemEquipped(Item item);
     }
 }
