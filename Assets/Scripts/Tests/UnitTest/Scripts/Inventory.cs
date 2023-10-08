@@ -38,4 +38,5 @@ namespace Tests.UnitTest.Scripts
             return totalArmor;
         }
     }
+
 }
